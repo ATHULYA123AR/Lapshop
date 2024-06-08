@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Bill</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #2c3e50;
+            font-family: 'Roboto', sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            color: #b0b435;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        table {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        th {
+            background-color: #b0b435;
+            color: white;
+        }
+        td {
+            color: #2c3e50;
+        }
+        .btn-back {
+            background-color: #b0b435;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .btn-back:hover {
+            background-color: #a0a832;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Bill</h1>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in bills %}
+                    <tr>
+                        <td>{{ order.date }}</td>
+                        <td>{{ order.product_name }}</td>
+                        <td>{{ order.quantity }}</td>
+                        <td>₹{{ order.total_price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center">
+            <a href="{% url 'home' %}" class="btn-back">Go Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
